@@ -1,15 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kot
- * Date: 03.12.18
- * Time: 20:57
- */
+
 
 namespace app\controllers;
 
 
-class AmbassadorController
-{
+use yii\web\Controller;
 
+class AmbassadorController extends Controller
+{
+    public $layout = 'ambassador/main';
+
+    public function actionIndex()
+    {
+        return $this->render('index', [
+                'hello' => 'Ambassador'
+            ]
+        );
+    }
 }

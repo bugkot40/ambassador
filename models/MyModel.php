@@ -9,7 +9,9 @@
 namespace app\models;
 
 
-class MyModel
+use yii\base\Model;
+
+class MyModel extends Model
 {
 
 }
