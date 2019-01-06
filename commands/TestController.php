@@ -34,4 +34,15 @@ class TestController extends Controller
         }
         print_r($arr);
     }
+
+    public function actionRead()
+    {
+
+        $dir = \Yii::getAlias("images/ambassador/");
+        unlink($dir.'okean2.jpg');
+//        $fh = fopen("../../web/text/ambassador/inn.txt", 'r');
+//        $text = fread($fh, 20);
+//        fclose($fh);
+//        echo $text;
+    }
 }

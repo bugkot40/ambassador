@@ -10,8 +10,8 @@ use Yii;
  * @property int $id
  * @property string $status
  * @property string $name
- * @property string $text
- * @property string $banner
+ * @property string $section
+
  *
  * @property AmbassadorPhoto[] $ambassadorPhotos
  */
@@ -31,9 +31,8 @@ class Section extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'string'],
-            [['status', 'name', 'banner'], 'string', 'max' => 255],
-            [['name'], 'unique'],
+            [['status', 'name', 'section'], 'string', 'max' => 255],
+            [['name', 'section'], 'unique'],
         ];
     }
 
@@ -46,8 +45,7 @@ class Section extends \yii\db\ActiveRecord
             'id' => 'ID',
             'status' => 'Status',
             'name' => 'Name',
-            'text' => 'Text',
-            'banner' => 'Banner',
+            'section' => 'Section',
         ];
     }
 

@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAssetAmbassador;
+use yii\helpers\Url;
 
 AppAssetAmbassador::register($this);
 ?>
@@ -25,29 +26,34 @@ AppAssetAmbassador::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+<?php $menu = \app\classes\ambassador\ContentGenerator::getMenu() ?>
+<?php $hotels = $menu['hotels']; ?>
+<?php $relaxations = $menu['relaxations']; ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'На главную',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Отели', 'url' => ['/ambassador/index']],
-            ['label' => 'Развлечения', 'url' => ['/ambassador/index']],
 
-        ],
-    ]);
-    NavBar::end();
-    ?>
+    <ul>
+        <?php foreach ($hotels as $hotel): ?>
+            <li class="js_menu">
+                <a class="js_menu" href="<?= Url::toRoute(['ambassador/section', 'id' => $hotel['id']]) ?>"
+                   data-id="<?= $hotel['id'] ?>">
+                    <?= $hotel['name'] ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <ul>
+        <?php foreach ($relaxations as $relaxation): ?>
+            <li class="js_menu">
+                <a class="js_menu" href="<?= Url::toRoute(['ambassador/section', 'id' => $relaxation['id']]) ?>"
+                   data-id="<?= $relaxation['id'] ?>">
+                    <?= $relaxation['name'] ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 
     <div class="container">
-
         <?= $content ?>
     </div>
 </div>

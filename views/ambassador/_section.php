@@ -1,4 +1,4 @@
-<?= $text ?>
-<?php debug($section) ?>
-<?php debug($photos) ?>
 
+
+    <?php $content = [$text, $section, $photos] ?>
+    <?php debug($content) ?>
